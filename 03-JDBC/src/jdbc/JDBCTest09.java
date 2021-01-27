@@ -7,6 +7,7 @@ import java.util.*;
 public class JDBCTest09{
 	public static void main(String[] args){
 
+		System.out.println("»¶Ó­");
 		Connection conn;
 		Statement stmt = null;
 		ResultSet rs = null;

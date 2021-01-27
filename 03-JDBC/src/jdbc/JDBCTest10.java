@@ -18,9 +18,9 @@ public class JDBCTest10 {
 		String url = bd.getString("url");
 		String user = bd.getString("user");
 		String password = bd.getString("password");
-		//1.创建数据库驱动
 		try {
-			//
+			
+			//1.创建数据库驱动
 			Class.forName(driver);
 			//2.获取数据库连接
 			conn = DriverManager.getConnection(url, user, password);
