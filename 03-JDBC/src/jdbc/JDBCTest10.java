@@ -64,4 +64,16 @@ public class JDBCTest10 {
 		}
 	}
 }
+/*
+SQL注入问题：
+	1.解决SQL注入问题：
+		只要用户提供的信息不参与SQL语句的编译过程，问题就解决了。
+		即使用户提供的信息中含有SQL语句的关键字，但是没有参与编译、不起作用
+		要想用户信息不参与SQL语句的编译，那么必须使用java.sql.PreparedStatement
+		PreparedStatement接口继承了java.sql.Statement
+		PreparedStatement属于预编译的数据库操作对象
+		PreparedStatement的原理是：预先对SQL语句的框架进行编译，然后再给SQL语句传值。
+	2.解决SQL注入问题的关键是：
+		用户提供的信息中即使含有sql语句的关键字，也不参与sql语句的编译。
+ */
 

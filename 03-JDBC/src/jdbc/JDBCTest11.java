@@ -36,7 +36,7 @@ public class JDBCTest11 {
     Statement stmt = null;
     ResultSet rs = null;
 
-    ResourceBundle rb = ResourceBundle.getBundle("jdbc.properties");
+    ResourceBundle rb = ResourceBundle.getBundle("jdbc");
     String driver = rb.getString("driver");
     String url = rb.getString("url");
     String user = rb.getString("user");
@@ -91,7 +91,7 @@ public class JDBCTest11 {
    * @return 用户输入的用户名和密码等信息
    */
   private static Map<String, String> initUI() {
-    System.out.print("欢迎使用！");
+    System.out.println("欢迎使用！");
     Scanner sc = new Scanner(System.in);
     
     System.out.print("用户名：");
@@ -102,7 +102,7 @@ public class JDBCTest11 {
     
     Map<String, String> userLoginMap = new HashMap<>();
     userLoginMap.put("loginName", loginName);
-    userLoginMap.put("loginPassword", loginPassword);
+    userLoginMap.put("loginPwd", loginPassword);
     
     return userLoginMap;
   }
