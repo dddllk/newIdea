@@ -1,62 +1,109 @@
 package jdbc;
-/*
-JDBC±à³Ì6²½
-*/
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Connection;
-import java.sql.Statement;
 
-public class JDBCTest01{
+import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ResourceBundle;
+import java.util.Scanner;
+
+/**
+ * Created by dlkyy on 2021-01-27 16:37
+ */
+public class JDBCTest01 {
 	public static void main(String[] args) {
+		// åˆå§‹åŒ–ç”¨æˆ·ç•Œé¢
+		Map<String, String> userMap =  InitUI();
+		// ç™»å½•
+		boolean flag = login(userMap);
+
+		System.out.println(flag ? "success" : "fail");
+	}
+
+	/**
+	 *
+	 * @param userMap ç”¨æˆ·ç™»å½•ä¿¡æ¯
+	 * @return trueè¡¨ç¤ºç™»å½•æˆåŠŸï¼Œfalseè¡¨ç¤ºç™»å½•å¤±è´¥
+	 */
+	private static boolean login(Map<String, String> userMap) {
+
+		// å®šä¹‰æ ‡è¯†
+		boolean loginSuccess = false;
+
+		ResourceBundle bd = ResourceBundle.getBundle("jdbc");
+		String driver = bd.getString("driver");
+		String url = bd.getString("url");
+		String user = bd.getString("user");
+		String password = bd.getString("password");
+
+		String loginName = userMap.get("loginName");
+		String loginPwd = userMap.get("loginPwd");
+
 		Connection conn = null;
 		Statement stmt = null;
-		try{
-			//1.×¢²áÇı¶¯
-			Driver driver = new com.mysql.jdbc.Driver();
-			DriverManager.registerDriver(driver);
-			//2.»ñÈ¡Á¬½Ó
-			/*
-				url: Í³Ò»×ÊÔ´¶¨Î»·û£¬ÍøÂçÖĞÄ³¸ö×ÊÔ´µÄ¾ø¶ÔÂ·¾¶
-					°üÀ¨Ğ­Òé¡¢IP¡¢PORT¡¢×ÊÔ´Ãû
-					127.0.0.1ºÍlocalhost¶¼ÊÇ±¾»úIPµØÖ·¡£
-			*/
-			String url = "jdbc:mysql://127.0.0.1:3306/bjpowernode";
-			String user = "root";
-			String password = "abc123";
+		ResultSet rs = null;
+
+		try {
+			// æ³¨å†Œé©±åŠ¨
+			Class.forName(driver);
+			// è·å–æ•°æ®åº“è¿æ¥
 			conn = DriverManager.getConnection(url, user, password);
-			System.out.println("Êı¾İ¿âÁ¬½Ó¶ÔÏó = " + conn);// Êı¾İ¿âÁ¬½Ó¶ÔÏó = com.mysql.jdbc.JDBC4Connection@1060b431
-			//3.»ñÈ¡Êı¾İ¿â²Ù×÷¶ÔÏó
+			// åˆ›å»ºæ•°æ®åº“æ“ä½œå¯¹è±¡
 			stmt = conn.createStatement();
-			//4.Ö´ĞĞsql
-			String sql = "insert into dept(deptno,dname,loc) values(50,'ÈËÊÂ²¿','BEIJING')";
-			// ×¨ÃÅÖ´ĞĞDMLÓï¾äµÄ£¨insert delete update£©
-			// ·µ»ØÖµÊÇÓ°Ïì£¬Êı¾İ¿âÖĞµÄ¼ÇÂ¼ÌõÊı
-			int count = stmt.executeUpdate(sql);
-			System.out.println(count == 1 ? "success":"fail");
-			// ´¦Àí²éÑ¯½á¹û¼¯
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally{
-			//6.ÊÍ·Å×ÊÔ´
-			// ÎªÁË±£Ö¤×ÊÔ´Ò»¶¨ÊÍ·Å£¬ÔÚfinallyÓï¾ä¿éÖĞ¹Ø±Õ×ÊÔ´
-			// ²¢ÇÒÒª×ñÑ­´ÓĞ¡µ½´óÒÀ´ÎÖ´ĞĞ¡£
-			// ·Ö±ğ¶ÔÆätry...catch
-			try{
-				if(stmt != null){
-					stmt.close();
-				}
-			}catch(SQLException e){
-				e.printStackTrace();
+			// æ‰§è¡Œsql
+			String sql = "select *from t_user where loginName='"+ loginName + "' and loginPwd ='" + loginPwd + "'";
+
+			rs = stmt.executeQuery(sql);
+			// æ“ä½œæ•°æ®
+			if(rs.next()){
+				loginSuccess = true;
 			}
-			try{
-				if(conn != null){
-					conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs != null){
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
-			}catch(SQLException e){
-				e.printStackTrace();
+			}
+			if(stmt != null){
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(conn != null){
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
+		return loginSuccess;
+	}
+
+	/**
+	 *  åˆå§‹åŒ–ç”¨æˆ·ç•Œé¢
+	 * @return ç”¨æˆ·è¾“å…¥ç”¨æˆ·åå¯†ç ç­‰ä¿¡æ¯
+	 */
+	private static Map<String, String> InitUI() {
+
+		System.out.println("æ¬¢è¿ï¼");
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print("ç”¨æˆ·åï¼š");
+		String username = sc.nextLine();
+
+		System.out.print("å¯†ç ï¼š");
+		String password = sc.nextLine();
+
+		Map<String, String> userInfo = new HashMap<>();
+		userInfo.put("loginName", username);
+		userInfo.put("loginPwd", password);
+
+		return userInfo;
 	}
 }

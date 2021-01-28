@@ -8,6 +8,10 @@ import java.util.Scanner;
 
 /**
  * Created by dlkyy on 2021/1/27 19:58
+ *
+ * 解决SQL注入问题('or '1'='1)
+ * 如何解决：
+ *  只要用户提供的信息不参与sql语句的编译过程
  */
 public class JDBCTest11 {
   public static void main(String[] args) {
@@ -33,7 +37,7 @@ public class JDBCTest11 {
     String loginPwd = userLoginMap.get("loginPwd");
 
     Connection conn = null;
-    Statement stmt = null;
+    PreparedStatement ps = null;
     ResultSet rs = null;
 
     ResourceBundle rb = ResourceBundle.getBundle("jdbc");
@@ -47,11 +51,15 @@ public class JDBCTest11 {
       Class.forName(driver);
       // 2.获取数据库连接
       conn = DriverManager.getConnection(url, user, password);
-      // 3.获取数据库操作对象
-      stmt = conn.createStatement();
+      // 3.获取预编译的数据库操作对象
+      String sql = "select *from t_user where loginName = ? and loginPwd = ?"; // ?是占位符，一个问号接收一个值，不能使用单引号括起来
+      // 程序执行到此处，会发送sql语句给DBMS，然后DBMS进行sql语句的预编译。
+      ps = conn.prepareStatement(sql);
+      // 给占位符传值(第一个问号下标是1，第二个问号下标是2，JDBC中下标从1开始)
+      ps.setString(1, loginName);
+      ps.setString(2, loginPwd);
       // 4.执行sql
-      String sql = "select *from t_user where loginName = '" + loginName + "' and loginPwd = '" + loginPwd + "'";
-      rs = stmt.executeQuery(sql);
+      rs = ps.executeQuery(); // 不需要在传入sql语句
       // 5.处理结果集
       if(rs.next()) {
         // 登录成功！
@@ -68,9 +76,9 @@ public class JDBCTest11 {
           e.printStackTrace();
         }
       }
-      if(stmt != null){
+      if(ps != null){
         try {
-          stmt.close();
+          ps.close();
         } catch (SQLException e) {
           e.printStackTrace();
         }
@@ -107,3 +115,11 @@ public class JDBCTest11 {
     return userLoginMap;
   }
 }
+
+/*
+  绿色，已经加入控制暂未提交
+  红色，未加入版本控制
+  蓝色，加入，已提交，有改动
+  白色，加入，已提交，无改动
+  灰色：版本控制已忽略文件。
+ */
