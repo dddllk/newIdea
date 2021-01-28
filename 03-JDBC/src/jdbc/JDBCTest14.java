@@ -3,6 +3,7 @@ package jdbc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  * Created by dlkyy on 2021-01-28 14:42
@@ -43,6 +44,22 @@ public class JDBCTest14 {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			// 释放资源
+			if(ps != null){
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(conn != null){
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 }
