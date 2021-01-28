@@ -35,10 +35,10 @@ public class DBUtil {
 	/**
 	 *
 	 * @param conn 数据库连接对象
-	 * @param stmt 数据库操作对象
+	 * @param ps 数据库操作对象
 	 * @param rs 结果集
 	 */
-	public static void close(Connection conn, Statement stmt, ResultSet rs){
+	public static void close(Connection conn, PreparedStatement ps, ResultSet rs){
 		if(rs != null){
 			try {
 				rs.close();
@@ -46,9 +46,9 @@ public class DBUtil {
 				e.printStackTrace();
 			}
 		}
-		if(stmt != null){
+		if(ps != null){
 			try {
-				stmt.close();
+				ps.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
