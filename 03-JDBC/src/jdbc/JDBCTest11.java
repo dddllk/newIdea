@@ -12,6 +12,17 @@ import java.util.Scanner;
  * 解决SQL注入问题('or '1'='1)
  * 如何解决：
  *  只要用户提供的信息不参与sql语句的编译过程
+ *
+ * SQL语句的执行过程：只要SQL语句不发生任何变化，就只在第一次执行的时候编译一次
+ *                以后再执行，不再进行编译
+ *
+ *  对比Statement和PreparedStatement：
+ *    1.Statement存在SQL注入问题，PreparedStatement解决了SQL注入问题
+ *    2.Statement是编译一次执行一次，PreparedStatement是编译一次执行N次。PreparedStatement的效率较高
+ *    3.PreparedStatement会在编译阶段做类型的安全检查
+ *
+ *  什么情况下必须使Statement呢？
+ *    业务方面要求必须支持sql注入的时候。
  */
 public class JDBCTest11 {
   public static void main(String[] args) {
