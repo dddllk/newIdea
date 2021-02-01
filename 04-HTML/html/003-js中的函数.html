@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>003-js中的函数</title>
+    <script>
+        /*
+          js中的函数等同于java语言中的方法
+          js中的变量是一种弱类型。
+          js中函数的语法格式：
+            第一种方式：
+                function 函数名(形式参数列表){
+                    函数体;
+                }
+            第二种方式：
+                函数名 = function(形式参数列表){
+                    函数体;
+                }
+            js中的函数不需要制定返回值类型，返回什么类型都可以。
+            js当中的函数在调用的时候，参数的类型没有显示，并且参数的个数也没有显示。js就是这么随意。
+         */
+
+        sayHello = function (username) {
+            alert("hello " + username);
+        }
+
+        function sum(a, b){
+            return a + b;
+        }
+        // 调用
+        var retValue = sum(1, 2);
+        alert(retValue); // 3
+
+        var retValue1 = sum("dd"); // jack赋值给a变量，b变量没有赋值，系统默认赋值undefined
+        alert(retValue1); //ddundefined
+
+        var retValue2 = sum();
+        alert(retValue2); // NaN(是一个具体存在的值，该值表示不是数字。Not a number)
+
+        var retValue3 = sum(1, 2, 3);
+        alert(retValue3); // 3
+
+        function test1(username){
+            alert("test1");
+        }
+        function test1() {
+            alert("test1 test1");
+        }
+        // 在js中，当方法名相同时，后面个方法会将前面个同名的方法覆盖。
+        test1("lisi"); // 调用的是第二个test1函数。
+    </script>
+</head>
+<body>
+<input type="button" value="hello" onclick="sayHello('dd');">
+</body>
+</html>
