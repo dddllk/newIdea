@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form表单</title>
+</head>
+<body>
+<!--
+    1.表单有什么用？
+        收集用户信息，表单展现之后，用户填写表单，点击提交按钮提交数据给服务器。
+    2.怎么画一个表单？
+        form标签
+    3.一个网页中可以有多个表单form
+    4.表单最终要提交给服务器，form标签有个action属性，这个属性用来指定服务器地址(网址)。
+        action属性用来指定数据提交给哪个服务器。
+    5.超链接和表单都可以向服务器发送请求，只不过表单发送请求的同时可以携带数据。
+    6.<input type="reset" value="清空"/> ，<input type="submit" value="登录"/>必须放在form标签内部才有效。
+    7.<input type="text" name="username"/> 有name属性的时候，才会提交数据(重点★★★★★)
+        以
+        http://localhost:63342/Login.java/04-HTML/HTML/009-Form%E8%A1%A8%E5%8D%95.html?username=123456&password=1234#
+        的方式提交数据(name和value必须存在)
+        格式：action?name=value&name=value&name=value...
+        Http协议，必须以这种格式提交。
+      W3C规定：表单项写了name属性的，一律会提交给服务器，不像这一项提交，就不要写name属性。
+-->
+<form action = "http://www.baidu.com">
+    <label>
+        姓名
+        <input type="text"/>
+        <input type="submit" value="按钮上显示的文本">
+    </label>
+</form>
+<form action="#">
+    <table>
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" name="username"/></td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="text" name="password"/></td>
+        </tr>
+        <tr align="center">
+            <td colspan="2"><input type="submit" value="登录" /><input type="reset" value="重置" /></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
