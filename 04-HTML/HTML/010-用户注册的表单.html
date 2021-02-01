@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>010-用户注册的表单</title>
+</head>
+<body>
+<!--
+    用户注册：
+        姓名
+        密码
+        确认密码
+        性别
+        兴趣爱好
+        学历
+        简介
+
+    form表单method属性：
+        get：采用get属性的时候，用户提交的信息会显示在浏览器的地址栏上。
+        post：采用post方式提交的时候，用户提交的信息不会显示在浏览器的地址栏上
+        当用户提交的信息中有敏感信息的时候，建议采用post方式，默认是get方式。
+        post 与 get提交的数据格式是不会变的
+-->
+<Form action="#">
+    <table title="用户注册" align="center" border="1px">
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" name="username"/></td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password" name="password"/></td>
+        </tr>
+        <tr>
+            <td>确认密码</td>
+            <td><input type="password"/></td><!-- 确认密码不用提交，JS就可以判断 -->
+        </tr>
+        <tr>
+            <td>性别</td>
+            <td>
+                <label><input type="radio" name="sex" value="男" />男</label>
+                <label><input type="radio" name="sex" value="女" checked/>女</label>
+            </td>
+        </tr>
+        <tr>
+            <td>兴趣爱好</td>
+            <td>
+                <input type="checkbox" name="hobby" value="篮球"/>篮球
+                <input type="checkbox" name="hobby" value="足球"/>足球
+                <input type="checkbox" name="hobby" value="乒乓球"/>乒乓球<br>
+                <input type="checkbox" name="hobby" value="羽毛球"/>羽毛球
+                <input type="checkbox" name="hobby" value="排球" checked/>排球
+            </td>
+        </tr>
+        <tr>
+            <td>学历</td>
+            <td>
+                <!-- 下拉列表-->
+                <select name="grade">
+                    <option value="高中">高中</option>
+                    <option value="大学" selected>大学</option>
+                    <option value="博士">博士</option>
+                    <option value="硕士">硕士</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <!-- 文本域 没有value属性 用户填写的就是value-->
+            <td>简介</td>
+            <td><textarea rows="4" colspan="6"></textarea></td>
+        </tr>
+        <tr align="center" >
+            <td colspan="2">
+                <input type="submit" name="提交" />
+                &nbsp;&nbsp;&nbsp;
+                <input type="reset" name="重置">
+            </td>
+        </tr>
+    </table>
+    <!-- 超链接也可以提交数据给服务器，但是提交的数据都是固定不变的-->
+    <!-- 超链接是get请求，不是post请求 -->
+    <a href="http://www.baidu.com?password=123&name=dd">baidu</a>
+</Form>
+</body>
+</html>
