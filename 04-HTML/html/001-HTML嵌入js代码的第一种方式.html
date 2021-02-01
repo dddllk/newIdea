@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>001-HTML嵌入js代码的第一种方式</title>
+    <script type="text/javascript" src="../js/js.js">
+        // 这里的代码不会执行
+    </script><!--结束的script标签必须有-->
+    <script type="text/javascript">
+        // 这里可以写代码
+    </script>
+</head>
+<body>
+<!--
+    1.JS是一门事件驱动型编程语言，依靠事件去驱动，然后执行对应程序
+    2.javascript的脚本块在一个页面中可以出现多次。没有要求。
+    3.JavaScript的脚本块出现位置也没有要求，随意。
+    4.alert有阻挡当前页面加载的作用。
+-->
+<input type="button" value="hello" onclick="alert('hello js1');alert('hello js')"/>
+</body>
+</html>
