@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>009-js代码捕捉回车键</title>
+	<script>
+		window.onload = function() {
+		    var userElt = document.getElementById("username");
+		    // 回车的键值是13
+				// ESC的键值是27
+				userElt.onkeydown = function(e) {
+				  // 获取键值
+						console.log(e.keyCode);
+				}
+		}
+	</script>
+</head>
+<body>
+<input type="text" id="username">
+</body>
+</html>
