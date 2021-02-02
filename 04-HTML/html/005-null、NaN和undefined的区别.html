@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>005-null、NaN和undefined的区别</title>
+    <script>
+        // null、NaN和undefined的区别
+        alert(typeof null); // object
+        alert(typeof NaN); // number
+        alert(typeof undefined); // undefined
+
+        // null 和 undefined等同。
+        alert(null == NaN); // false
+        alert(null == undefined); // true
+        alert(undefined == NaN); // false
+
+        // 在js中有两个比较特殊的运算符
+        // ==(等同运算符，只判断值是否相等)
+        // ===(全等运算符：既判断值，又判断数据类型)
+
+        alert(1 == true);  // true
+        alert(1 === true); // false
+    </script>
+</head>
+<body>
+
+</body>
+</html>
