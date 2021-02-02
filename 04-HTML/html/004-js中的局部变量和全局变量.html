@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>004-js中的局部变量和全局变量</title>
+    <script>
+        function myfun(){
+            myname = "ddd"; // myname是全局变量
+            // 不用var关键字声明的变量，无论在哪里声明都是全局变量。
+        }
+        // 访问函数
+        myfun();
+        alert("myname = " + myname);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
