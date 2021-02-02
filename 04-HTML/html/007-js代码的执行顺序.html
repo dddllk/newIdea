@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>007-js代码的执行顺序</title>
+    <script>
+        window.onload = function (){
+            document.getElementById("btn").onclick = function() {
+                alert("你好像一条狗啊！");
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="hello" id="btn"/>
+</body>
+</html>
