@@ -29,11 +29,26 @@
             submit
 
 
-
+            任何一个时间都会对应一个事件句柄，事件句柄是在事件前面加on
+            onXxx这个时间句柄出现在一个标签的位置上。（事件句柄以属性的形式存在）
          */
+        // 对于当前程序来说，sayHello函数被称为回调函数（callback）
+        // 回调函数的特点：自己把这个函数写出来了，但是这个函数不是自己负责调用，由其他程序负责调用该函数
+        function sayHello(){
+            alert("hello hs");
+        }
     </script>
 </head>
 <body>
-
+<input type="button" value="hello">
+<input type="button" value="hello1" id="btn1">
+<script>
+    // 必须等页面加载完成之后再执行js语句
+    // 否则会报 Uncaught TypeError: Cannot set property 'onclick' of null错误
+    // 解决方法，将script代码放在html页面的底部
+    document.getElementById("btn1").onclick = function() {
+        alert("Test.....");
+    }
+</script>
 </body>
 </html>
