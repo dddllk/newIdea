@@ -11,9 +11,25 @@
         // 访问函数
         myfun();
         alert("myname = " + myname);
+
+        // 给String扩展一个函数
+        String.prototype.sayHello = function() {
+            alert("这是给String类型扩展的函数");
+        }
+        "dd".sayHello();
     </script>
 </head>
 <body>
 
 </body>
 </html>
+<!--
+    JS语言定义类和创建对象
+    User = function(username,password){
+        this.username = username;
+        this.password = password;
+    }
+    var u = new user();
+    var u = new user("zhangsan");
+    var u = new user("zhangsan", "123");
+-->
