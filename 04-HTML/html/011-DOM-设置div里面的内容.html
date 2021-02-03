@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>011-DOM-设置div里面的内容</title>
+    <style type="text/css">
+        #div{
+            width:200px;
+            height: 200px;
+            position:absolute;
+            top : 100px;
+            left : 100px;
+            background: red;
+        }
+    </style>
+    <script>
+        window.onload = function (){
+            document.getElementById("btn").onclick = function() {
+                document.getElementById("div").innerHTML = "你好像一条狗啊";
+                document.getElementById("div").innerText = "<font>你好像一条狗啊！</font>"
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="div"></div>
+<input type="button" id="btn" value="在div中添加内容">
+</body>
+</html>
