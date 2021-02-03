@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>008-表单验证</title>
-    <style>
+    <style type="text/css">
         .spanError{
             font-size: 12px;
             color: red;
         }
 
     </style>
-    <script>
+    <script type="text/javascript">
         window.onload = function() {
             // 验证用户名
             var usernameElt = document.getElementById("username");
             var usernameSpan = document.getElementById("usernameSpan");
             var usernameReg = /^[a-zA-Z0-9]+$/ig;
+            var usernameFlag = false;
+            // 失去焦点
             usernameElt.onblur = function() {
                 // 失去焦点的时候才获取value
                 var username = usernameElt.value;
@@ -23,18 +25,100 @@
                 if(username === ""){
                     usernameSpan.innerText = "用户名不能为空";
                 }else {
-                  if(username.length > 14 ||username.length < 6){
+                   if(username.length > 14 || username.length < 6){
                     usernameSpan.innerText = "用户名长度必须在6-14位之间"
-                  }else{
+                   }else{
                       if(usernameReg.test(username)){
-                          usernameSpan.innerHTML = "<span style='color: green'>验证成功</span>"
+                          usernameSpan.innerHTML = "<span style='color: green'>验证成功</span>";
+                          usernameFlag = true;
                       }else {
                           usernameSpan.innerText = "用户名只能由数字和字母组成，不能含有其他符号";
                       }
-                  }
+                   }
+                }
+            }
+            // 获得焦点
+            usernameElt.onfocus = function() {
+                if(!usernameFlag){
+                    usernameElt.value = "";
+                    usernameSpan.innerHTML = "";
                 }
             }
             // 验证密码
+            var passwordElt = document.getElementById("password");
+            var passwordSpanElt = document.getElementById("passwordSpan");
+            var rePwdElt = document.getElementById("rePwd");
+            var rePwdSpanElt = document.getElementById("rePwdSpan");
+            var passwordFlag = false;
+            var rePwdFlag = false;
+            passwordElt.onblur = function() {
+                if(passwordElt.value.trim() === ""){
+                    passwordSpanElt.innerText = "密码不能为空";
+                }else {
+                    passwordSpanElt.innerHTML = "<span style='color: green'>输入密码成功！</span>";
+                    passwordFlag = true;
+                }
+            }
+            passwordElt.onfocus = function() {
+                if(!passwordFlag){
+                    passwordElt.value = "";
+                    passwordSpanElt.innerHTML = "";
+                }
+            }
+            rePwdElt.onblur = function() {
+                if(rePwdElt.value.trim() === ""){
+                    rePwdSpanElt.innerText = "重复密码不能为空";
+                } else {
+                    if(passwordElt.value === rePwdElt.value){
+                        rePwdSpanElt.innerHTML = "<span style='color: green'>验证成功！</span>";
+                        rePwdFlag = true;
+                    }else {
+                        rePwdSpanElt.innerText = "两次输入的密码不一致";
+                    }
+                }
+            }
+            rePwdElt.onfocus = function() {
+                if(!rePwdFlag){
+                    rePwdElt.value = "";
+                    rePwdSpanElt.innerHTML = "";
+                }
+            }
+            // 验证邮箱
+            var emailElt = document.getElementById("email");
+            var emailSpanElt = document.getElementById("emailSpan");
+            var emailReg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+            var emailFlag = false;
+            emailElt.onblur = function() {
+                if(emailElt.value.trim() === ""){
+                    emailSpanElt.innerText = "邮箱不能为空";
+                }else {
+                    if(emailReg.test(emailElt.value)){
+                        emailSpanElt.innerHTML = "<span style='color: green'>验证成功！</span>";
+                        emailFlag = true;
+                    }else {
+                        emailSpanElt.innerText = "验证失败！";
+                    }
+                }
+            }
+            emailElt.onfocus = function() {
+                if(!emailFlag){
+                    emailElt.value = "";
+                    emailSpanElt.innerHTML = "";
+                }
+            }
+            // 给提交按钮绑定单击事件
+            document.getElementById("submitBtn").onclick = function() {
+
+
+                if(usernameFlag && passwordFlag && rePwdFlag && emailFlag){
+                    // 获取表单对象
+                    var myform = document.getElementById("form");
+                    // 可以在这里设置action，也可以不在这里
+                    myform.action = "http://www.baidu.com";
+                    // 提交表单
+                    myform.submit();
+                }
+            }
         }
     </script>
 </head>
@@ -49,27 +133,35 @@
     （7）文本框再次获得焦点后，清空错误提示信息，如果文本框中数据不合法，清空文本框的value
     （8）最终表单中所有项均合法方可提交。
 -->
-<table align="center">
-    <tr>
-        <td>用户名</td>
-        <td><input type="text" name="username" id="username"></td>
-        <td><span class="spanError" id="usernameSpan"></span></td>
-    </tr>
-    <tr>
-        <td>密码</td>
-        <td><input type="password" name="password" id="password"></td>
-        <td><span class="spanError" id="passwordSpan"></span></td>
-    </tr>
-    <tr>
-        <td>确认密码</td>
-        <td><input type="password" name="rePwd" id="rePwd"></td>
-        <td><span class="spanError" id="rePwdSpan"></span></td>
-    </tr>
-    <tr>
-        <td>邮箱</td>
-        <td><input type="text" name="email" id="email"></td>
-        <td><span class="spanError" id="emailSpan"></span></td>
-    </tr>
-</table>
+<form id="form" action="get">
+    <table align="center">
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" name="username" id="username"></td>
+            <td><span class="spanError" id="usernameSpan"></span></td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password" name="password" id="password"></td>
+            <td><span class="spanError" id="passwordSpan"></span></td>
+        </tr>
+        <tr>
+            <td>确认密码</td>
+            <td><input type="password" name="rePwd" id="rePwd"></td>
+            <td><span class="spanError" id="rePwdSpan"></span></td>
+        </tr>
+        <tr>
+            <td>邮箱</td>
+            <td><input type="text" name="email" id="email"></td>
+            <td><span class="spanError" id="emailSpan"></span></td>
+        </tr>
+        <tr align="center">
+            <td colspan="3">
+                <input type="button" value="提交" id="submitBtn">
+                <input type="reset" value="重置">
+            </td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>
