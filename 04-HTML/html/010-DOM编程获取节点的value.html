@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>010-DOM获取节点的value</title>
+    <script>
+        window.onload = function() {
+            document.getElementById("btn").onclick = function() {
+                //获取username
+                var usernameElt = document.getElementById("username");
+                var username = usernameElt.value;
+                //获取password
+                var passwordElt = document.getElementById("password");
+                passwordElt.value = username;
+            }
+        }
+    </script>
+</head>
+<body>
+姓名<input type="text" id="username"><br>
+密码<input type="text" id="password"><br>
+<br>
+<input type="button" value="获取文本框value" id="btn">
+<hr>
+
+<!--onblur-->
+<!--this代表当前节点对象-->
+<input type="text" onblur="alert(this.value)">
+</body>
+</html>
