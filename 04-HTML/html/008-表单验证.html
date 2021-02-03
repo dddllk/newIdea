@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>008-表单验证</title>
+    <style>
+        .spanError{
+            font-size: 12px;
+            color: red;
+        }
+
+    </style>
+    <script>
+        window.onload = function() {
+            // 验证用户名
+            var usernameElt = document.getElementById("username");
+            var usernameSpan = document.getElementById("usernameSpan");
+            var usernameReg = /^[a-zA-Z0-9]+$/ig;
+            usernameElt.onblur = function() {
+                // 失去焦点的时候才获取value
+                var username = usernameElt.value;
+                username = username.trim();
+                if(username === ""){
+                    usernameSpan.innerText = "用户名不能为空";
+                }else {
+                  if(username.length > 14 ||username.length < 6){
+                    usernameSpan.innerText = "用户名长度必须在6-14位之间"
+                  }else{
+                      if(usernameReg.test(username)){
+                          usernameSpan.innerHTML = "<span style='color: green'>验证成功</span>"
+                      }else {
+                          usernameSpan.innerText = "用户名只能由数字和字母组成，不能含有其他符号";
+                      }
+                  }
+                }
+            }
+            // 验证密码
+        }
+    </script>
+</head>
+<body>
+<!--
+    （1）用户名不能为空
+    （2）用户名必须在6-14位之间
+    （3）用户名只能由数字和字母组成，不能含有其他符号（正则表达式）
+    （4）密码和确认密码一致，邮箱地址合法
+    （5）统一失去焦点验证
+    （6）错误提示信息统一在span标签中提示，并且要求字体12号，红色。
+    （7）文本框再次获得焦点后，清空错误提示信息，如果文本框中数据不合法，清空文本框的value
+    （8）最终表单中所有项均合法方可提交。
+-->
+<table align="center">
+    <tr>
+        <td>用户名</td>
+        <td><input type="text" name="username" id="username"></td>
+        <td><span class="spanError" id="usernameSpan"></span></td>
+    </tr>
+    <tr>
+        <td>密码</td>
+        <td><input type="password" name="password" id="password"></td>
+        <td><span class="spanError" id="passwordSpan"></span></td>
+    </tr>
+    <tr>
+        <td>确认密码</td>
+        <td><input type="password" name="rePwd" id="rePwd"></td>
+        <td><span class="spanError" id="rePwdSpan"></span></td>
+    </tr>
+    <tr>
+        <td>邮箱</td>
+        <td><input type="text" name="email" id="email"></td>
+        <td><span class="spanError" id="emailSpan"></span></td>
+    </tr>
+</table>
+</body>
+</html>
