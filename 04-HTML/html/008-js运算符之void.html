@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>008-js运算符之void</title>
+</head>
+<body>
+页面顶部<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<!--
+    void运算符的语法：void(表达式)
+    运算原理，执行表达式，但不返回任何结果。
+    javascript:void(0)
+    其中javascript作用是告诉浏览器后面是一段js代码。
+    以下程序的javascript是不能省略的
+    void()后面的小括号中必须有表达式
+-->
+<a href="javascript:void(0)" onclick="window.alert('test')">
+    既保留住超链接样式，同时用户点击该超链接的时候执行一段js代码，页面还不能跳转
+</a>
+<br><br>
+<a href="javascript:;" onclick="window.alert('test')">
+    既保留住超链接样式，同时用户点击该超链接的时候执行一段js代码，页面还不能跳转
+</a>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
