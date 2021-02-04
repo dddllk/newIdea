@@ -3,6 +3,107 @@
 <head>
 	<meta charset="UTF-8">
 	<title>001-JSON</title>
+	<script>
+		// 创建JSON对象 （标准的、轻量化的数据交换格式）
+		var studentObj = {
+			"sno" : "110",
+			"sname" : "dd",
+			"sex" : "male"
+		};
+		var studentObj1 = [
+			{"sno" : "110","sname" : "dd","sex" : "male"},
+			{"sno" : "120","sname" : "ll","sex" : "male"},
+			{"sno" : "130","sname" : "kk","sex" : "male"}
+		];
+		/*
+			请自行设置JSON格式的数据，
+			这个JSON格式的数据可以描述整个班级中每一个学生的信息，
+			以及总人数
+		 */
+		var stu = {
+			"grade" : "高2010级09班",
+			"total" : 4,
+			"flag" : "good good study day day up!",
+			"info": [{
+				"sno" : "110",
+				"age" : "16",
+				"sex" : "male",
+				"hometown" : "重庆",
+				"College_entrance_examination_results" : 669,
+				"rank" : 2,
+				"score" : {
+					"CHINESE" : 110,
+					"ENGLISH" : 136,
+					"MATH" : 142,
+					"Physics" : 112,
+					"Chemistry" : 100,
+					"Biology" : 69,
+				},
+				"College" : "复旦大学"
+			},
+				{
+					"sno" : "120",
+					"age" : "18",
+					"sex" : "male",
+					"hometown" : "河南",
+					"College_entrance_examination_results" : 656,
+					"rank" : 3,
+					"score" : {
+						"CHINESE" : 100,
+						"ENGLISH" : 106,
+						"MATH" : 150,
+						"Physics" : 120,
+						"Chemistry" : 108,
+						"Biology" : 72,
+					},
+					"College" : "北京航空航天大学"
+				},
+				{
+					"sno" : "130",
+					"age" : "17",
+					"sex" : "female",
+					"hometown" : "山西",
+					"College_entrance_examination_results" : 609,
+					"rank" : 4,
+					"score" : {
+						"CHINESE" : 136,
+						"ENGLISH" : 150,
+						"MATH" : 110,
+						"Physics" : 86,
+						"Chemistry" : 72,
+						"Biology" : 55,
+					},
+					"College" : "中国人民大学"
+				},
+				{
+					"sno" : "140",
+					"age" : "16",
+					"sex" : "male",
+					"hometown" : "重庆",
+					"College_entrance_examination_results" : 693,
+					"rank" : 1,
+					"score" : {
+						"CHINESE" : 120,
+						"ENGLISH" : 142,
+						"MATH" : 150,
+						"Physics" : 112,
+						"Chemistry" : 100,
+						"Biology" : 69,
+					},
+					"College" : "清华大学"
+				},
+			],
+			"avgScore" : {
+				"CHINESE" : 86.7,
+				"ENGLISH" : 92,
+				"MATH" : 99,
+				"Physics" : 110,
+				"Chemistry" : 92,
+				"Biology" : 69,
+				"Sports" : 100
+			}
+		};
+	</script>
 </head>
 <body>
 
