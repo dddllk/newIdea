@@ -3,8 +3,72 @@
 <head>
 	<meta charset="UTF-8">
 	<title>009-复选框之单选、全选、全不选和反选</title>
+	<script type="text/javascript">
+		window.onload = function() {
+			// 获取全选节点
+			var allElt = document.getElementById("selectAll");
+			// 获取全不选节点
+			var noneElt = document.getElementById("selectNone");
+			// 获取反选节点
+			var invertElt = document.getElementById("invertSelect");
+			// 获取多选框
+			var hobbyElt = document.getElementsByName("hobby");
+
+			// 点击全选
+			allElt.onclick = function() {
+				for(var i = 0; i < hobbyElt.length; i++) {
+					hobbyElt[i].checked = allElt.checked;
+				}
+				noneElt.checked = false;
+				invertElt.checked = false;
+			}
+			// 点击全不选
+			noneElt.onclick = function() {
+				for(var i = 0; i < hobbyElt.length; i++) {
+					if (!hobbyElt[i].checked) {
+						continue;
+					}
+					hobbyElt[i].checked = !noneElt.checked;
+				}
+				allElt.checked = false;
+			}
+			// 点击反选
+			invertElt.onclick = function() {
+				for(var i = 0; i < hobbyElt.length; i++){
+					hobbyElt[i].checked = !hobbyElt[i].checked;
+					if(hobbyElt[i].checked){
+						allElt.checked = true;
+						noneElt.checked = false;
+					}else {
+						allElt.checked = false;
+						noneElt.checked = true;
+					}
+				}
+			}
+			//点击爱好
+			var hobbyLength = hobbyElt.length;
+			for(var i = 0; i < hobbyLength; i++){
+				hobbyElt[i].onclick = function() {
+					var countHobby = 0;
+					// 总数量和选中的数量相等的时候
+					for(var i = 0; i < hobbyLength; i++) {
+						if(hobbyElt[i].checked){
+							countHobby++;
+						}
+					}
+					allElt.checked = (countHobby === hobbyLength);
+				}
+			}
+		}
+	</script>
 </head>
 <body>
-
+<input type="checkbox" id="selectAll"/>全选&nbsp;<input type="checkbox" id="selectNone"/>全不选&nbsp;<input type="checkbox" id="invertSelect"/>反选
+<br>
+<br>
+<br>
+<input type="checkbox" name="hobby" value="basketball">篮球<br>
+<input type="checkbox" name="hobby" value="football">足球<br>
+<input type="checkbox" name="hobby" value="volleyball">排球<br>
 </body>
 </html>
