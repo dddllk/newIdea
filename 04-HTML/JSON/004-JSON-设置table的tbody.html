@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>004-JSON-设置table的tbody</title>
+    <style>
+        .tbody{
+            text-align:  center;
+        }
+    </style>
+    <script>
+        var data = {
+            "total" : 3,
+            "emps": [
+                {"empno" : 110, "name" : "dd", "sal" : 6666},
+                {"empno" : 120, "name" : "ll", "sal" : 7777},
+                {"empno" : 130, "name" : "kk", "sal" : 8888}
+            ]
+        };
+
+        // 显示员工信息
+        function display(){
+          var emps = data.emps;
+          var tHtml = "";
+          for(var i = 0; i < emps.length; i++){
+              var emp = emps[i];
+              tHtml += "<tr>";
+              tHtml += "<td>"+emp.empno+"</td>";
+              tHtml += "<td>"+emp.name+"</td>";
+              tHtml += "<td>"+emp.sal+"</td>";
+              tHtml += "</tr>";
+            }
+          document.getElementById("tBody").innerHTML = tHtml;
+          document.getElementById("count").innerHTML = data.total;
+        }
+    </script>
+</head>
+<body>
+<input type="button" onclick="display()" value="显示员工信息列表">
+<h2>员工信息列表</h2>
+<hr>
+<table border="1px" width="50%">
+    <tr>
+        <th>员工编号</th>
+        <th>员工名字</th>
+        <th>员工薪水</th>
+    </tr>
+    <tbody class="tbody" id="tBody">
+    <!--
+        <tr>
+            <td>110</td>
+            <td>dd</td>
+            <td>6666</td>
+        </tr>
+        <tr>
+            <td>120</td>
+            <td>ll</td>
+            <td>7777</td>
+        </tr>
+        <tr>
+            <td>130</td>
+            <td>kk</td>
+            <td>8888</td>
+        </tr>
+        -->
+    </tbody>
+</table>
+总记录条数<span id="count">0</span>
+</body>
+</html>
