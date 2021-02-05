@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>003-JSON面试题</title>
+    <script>
+        /*
+        JSON是一种行业内的数据交换格式标准，
+        JSON在js中以对象的形式存在。
+            面试题：
+                在js当中，[]和{}有什么区别？
+                []是数组，
+                {}是JSON
+
+               java中的数组：int[] arr = {1,2,3,4};
+               JS中的数组：var arr = [1,2,3,4];
+               JSON: var jsonObj = {"email":"474464152@qq.com", "name" : "dlkyy"};
+         */
+        // 访问JSON数据的两种方式
+        var json = {
+            "username": "ddd",
+        };
+        document.write(json.username);
+        document.write("<br>")
+        document.write(json["username"]);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
