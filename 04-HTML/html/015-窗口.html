@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>015-窗口</title>
+    <script>
+        /*如果当前窗口不是顶级窗口，将其设置为顶级窗口*/
+        function setTop(){
+            // window是当前浏览器窗口
+            // 当前窗口的顶级如果不是顶级
+            // window.top就是当前窗口对应的顶级窗口，014BOM编程之将当前窗口设置为顶级窗口.html
+            // window.self就是代表自己这个窗口，015.html
+            if(window.top !== window.self){
+                // 将当前窗口设置为顶级窗口
+                // window.top.location 是014.html的
+                // window.self.location 是015.html
+                window.top.location = window.self.location;
+            }
+        }
+    </script>
+</head>
+<body>
+015页面
+<input type="button" onclick="setTop()" value="将其设置为顶级窗口"/>
+</body>
+</html>
