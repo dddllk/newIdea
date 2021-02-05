@@ -4,6 +4,19 @@
 	<meta charset="UTF-8">
 	<title>001-JSON</title>
 	<script>
+		/*
+			1.什么是JSON，有什么用？
+				JavaScript Object Notation （Javascript对象标记，数据交换格式）
+			2.JSON是一种标注呢轻量级的数据交换格式。特点是：
+				体积小，易解析。
+			3.在实际开发中有两分钟数据交换格式，使用最多，其一是JSON，另一个是XML
+				XML体积较大，解析麻烦，但是其有语法严谨等优点
+
+				HTML和XML有一个共同的父亲，SGML(标准通用的标记语言)
+				HTML主要用于页面展示语法松散
+				XML主要数据交换，语法严格
+			4.JSON也可以被称为无类型对象
+		*/
 		// 创建JSON对象 （标准的、轻量化的数据交换格式）
 		var studentObj = {
 			"sno" : "110",
@@ -101,8 +114,18 @@
 				"Chemistry" : 92,
 				"Biology" : 69,
 				"Sports" : 100
+			},
+			"teacher": {
+				"CHINESE" : "MISS LI",
+				"ENGLISH" : "Mr WANG",
+				"MATH" : "Mr Shi",
+				"Physics": "Mr Liu",
+				"Chemistry" : "MISS Diao",
+				"Biology" : "Mr Dai",
+				"Sports" : "Mr Tang"
 			}
 		};
+		document.write(stu.grade);
 	</script>
 </head>
 <body>
