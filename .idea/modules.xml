@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/03-JDBC/03-JDBC.iml" filepath="$PROJECT_DIR$/03-JDBC/03-JDBC.iml" />
       <module fileurl="file://$PROJECT_DIR$/04-HTML/04-HTML.iml" filepath="$PROJECT_DIR$/04-HTML/04-HTML.iml" />
       <module fileurl="file://$PROJECT_DIR$/05-javaweb/05-javaweb.iml" filepath="$PROJECT_DIR$/05-javaweb/05-javaweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05_提供jar包的java工程/05_提供jar包的java工程.iml" filepath="$PROJECT_DIR$/05_提供jar包的java工程/05_提供jar包的java工程.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05_通过jar包获得类文件帮助的Java工程/05_通过jar包获得类文件帮助的Java工程.iml" filepath="$PROJECT_DIR$/05_通过jar包获得类文件帮助的Java工程/05_通过jar包获得类文件帮助的Java工程.iml" />
       <module fileurl="file://$PROJECT_DIR$/newIdea.iml" filepath="$PROJECT_DIR$/newIdea.iml" />
     </modules>
   </component>

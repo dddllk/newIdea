@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="bjpowernode">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/05_通过jar包获得类文件帮助的Java工程/bjpowernode.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
